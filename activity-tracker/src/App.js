@@ -10,6 +10,12 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount(){
+      this.setState({
+        activities: JSON.parse(window.localStorage.getItem("activity-tracker"))
+      })
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     let activityName = e.target.name.value;
