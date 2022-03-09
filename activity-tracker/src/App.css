@@ -1,0 +1,244 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap");
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* custom styles */
+
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 16px;
+}
+
+body{
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.2;
+}
+
+.container{
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+.flex{
+  display: flex;
+}
+
+.flex-23{
+  flex: 0 1 23%;
+}
+
+.flex-73{
+  flex: 0 1 73%;
+}
+
+.justify-sb{
+  justify-content: space-between;
+}
+
+.justify-ct{
+  justify-content: center;
+}
+
+.align-ct{
+  align-items: center;
+}
+
+.col{
+  flex-direction: column;
+}
+
+.wrap{
+  flex-wrap: wrap;
+}
+
+.m-t{
+  padding-top: 1rem;
+}
+
+.border{
+  border: 1px solid red;
+}
+
+
+.App {
+  text-align: center;
+}
+
+.main-heading{
+  font-size: 1.8rem;
+  color: #3e8fd1;
+  margin: 1rem 0;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.input-name{
+  padding: 0.7rem;
+  width: 25%;
+  border: 1px solid rgb(185, 185, 185);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.input-name::placeholder{
+  padding: 0.6rem;
+  font-size: 1rem;
+  color: rgb(167, 165, 165);
+}
+
+.submit-btn{
+  padding: 0.7rem;
+  background-color: #01d1b3;
+  border: 0;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.name{
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #272727;
+  margin-bottom: 0.4rem;
+}
+
+.month{
+  background-color: #fe6247;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.3rem;
+  border-radius: 4px;
+}
+
+.all-activities{
+  margin-top: 2rem;
+}
+
+.col-1-2{
+  background-color: #eef5fa;
+  text-align: center;
+}
+
+.activity-item{
+  /* height: 300px; */
+  padding: 1rem;
+  /* border: 1px solid red; */
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 2px 4px 10px 1px rgb(247, 244, 244),
+              -2px 4px 10px 1px rgb(247, 244, 244);
+}
+
+
+.day-btn{
+  background-color: transparent;
+  padding: 0.5rem 1.3rem;
+  border: 1px solid rgb(197, 197, 197);
+  margin: 0.7rem 0.5rem;
+  width: 60px;
+  height: 40px;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.day-btn:hover{
+  border: 1px solid blue;
+}
+
+.close-btn{
+  font-weight: 600;
+  color: #fff;
+  background-color: #f04768;
+  padding: 0.5rem;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+
+.completed{
+  background-color: #01d1b3;
+  color: #fff;
+}
+
+.progress{
+  text-align: center;
+}
+
+.progress-rate{
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.progress-rate span{
+  margin-left: 0.5rem;
+}
+
+.red{
+  color: red;
+}
+
+.amber{
+  color: #FFBF00;
+}
+
+.green{
+  color: green;
+}
