@@ -23,7 +23,6 @@ function Activity(props) {
   function progressRate(activity) {
     let progress = (
       (activity.days.reduce((acc, day) => {
-        console.log(acc, day);
         if (day.isDone) acc = acc + 1;
         return acc;
       }, 0) /
@@ -54,12 +53,12 @@ function Activity(props) {
                 <p className="month">{getMonthInText()}</p>
               </div>
               <div className="col-2-2 flex flex-73 wrap col">
-                <div className="days">                  
+                <div className="days">
                   {activity.days.map((day) => {
                     return (
                       <button
                         value={day.id}
-                        onClick={props.completed}
+                        onClick={() => props.completed(day.id, activity.name)}
                         className={day.isDone ? "completed day-btn" : "day-btn"}
                         key={day.id}
                       >
@@ -70,7 +69,7 @@ function Activity(props) {
                 </div>
                 <div className="progress">
                   <p className="progress-rate">
-                    Activity Progress: 
+                    Activity Progress:
                     <span className={progressRate(activity).category}>
                       {progressRate(activity).progress} %{" "}
                     </span>
@@ -79,7 +78,7 @@ function Activity(props) {
               </div>
               <span
                 className="close-btn flex justify-ct align-ct"
-                onClick={props.deleteActivity}
+                onClick={() => props.deleteActivity(activity.name)}
               >
                 X
               </span>

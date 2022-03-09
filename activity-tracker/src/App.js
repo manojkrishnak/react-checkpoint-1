@@ -1,22 +1,29 @@
 import React from "react";
-import "./App.css";
 import Activity from "./Components/Activity";
+import "./App.css";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activities: JSON.parse(window.localStorage.getItem("activity-tracker")),
+      activities: [],
     };
   }
 
-  componentDidMount(){
-    if(window.localStorage === "undefined"){
-      window.localStorage.setItem("activity-tracker", []);
-    }
-      // this.setState({
-      //   activities: JSON.parse(window.localStorage.getItem("activity-tracker"))
-      // })
+  componentDidMount() {
+    let activities = window.localStorage.getItem("activity-tracker")
+      ? JSON.parse(window.localStorage.getItem("activity-tracker"))
+      : [];
+    this.setState({
+      activities: activities,
+    });
+  }
+
+  componentDidUpdate() {
+    window.localStorage.setItem(
+      "activity-tracker",
+      JSON.stringify(this.state.activities)
+    );
   }
 
   handleSubmit = (e) => {
@@ -40,24 +47,24 @@ class App extends React.Component {
       this.setState({
         activities: JSON.parse(allActivities),
       });
-      window.localStorage.setItem("activity-tracker", allActivities);
     } else {
       alert("Activity cannot be empty");
     }
   };
 
-  handleCompleted = (e) => {
-    const activityName =
-      e.target.parentElement.parentElement.parentElement.dataset.activityId;
-    const day = parseInt(e.target.value) - 1;
+  handleCompleted = (id, name) => {
     let allActivities = JSON.parse(
       window.localStorage.getItem("activity-tracker")
     );
-    let index = allActivities.findIndex(
-      (activity) => activity.name === activityName
-    );
-    allActivities[index].days[day].isDone =
-      !allActivities[index].days[day].isDone;
+    allActivities.forEach(function (activity) {
+      if (activity.name === name) {
+        activity.days.forEach(function (day) {
+          if (day.id === id) {
+            day.isDone = !day.isDone;
+          }
+        });
+      }
+    });
     this.setState({
       activities: allActivities,
     });
@@ -67,14 +74,13 @@ class App extends React.Component {
     );
   };
 
-  handleDeleteActivity = (e) => {
-    const activityName = e.target.parentElement.dataset.activityId;
+  handleDeleteActivity = (name) => {
     let allActivities = JSON.parse(
       window.localStorage.getItem("activity-tracker")
     );
-    let index = allActivities.findIndex(
-      (activity) => activity.name === activityName
-    );
+    console.log(name);
+    let index = allActivities.findIndex((activity) => activity.name === name);
+    console.log(index);
     allActivities.splice(index, 1);
     this.setState({
       activities: allActivities,
@@ -126,11 +132,15 @@ class App extends React.Component {
             Add Activity
           </button>
         </form>
-        <Activity
-          completed={this.handleCompleted}
-          deleteActivity={this.handleDeleteActivity}
-          allActivities={this.state.activities}
-        />
+        {this.state.activities ? (
+          <Activity
+            completed={this.handleCompleted}
+            deleteActivity={this.handleDeleteActivity}
+            allActivities={this.state.activities}
+          />
+        ) : (
+          ""
+        )}
       </div>
     );
   }
