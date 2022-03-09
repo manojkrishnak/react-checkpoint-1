@@ -11,9 +11,12 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-      this.setState({
-        activities: JSON.parse(window.localStorage.getItem("activity-tracker"))
-      })
+    if(window.localStorage === "undefined"){
+      window.localStorage.setItem("activity-tracker", []);
+    }
+      // this.setState({
+      //   activities: JSON.parse(window.localStorage.getItem("activity-tracker"))
+      // })
   }
 
   handleSubmit = (e) => {
